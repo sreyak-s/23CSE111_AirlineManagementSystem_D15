@@ -1,5 +1,5 @@
 package com.airline.model.user;
-
+import com.airline.model.booking.*;
 import com.airline.model.admin.*;
 import com.airline.model.flight.*;
 import com.airline.model.payment.*;
@@ -130,6 +130,16 @@ public class User {
 	    availableseats--;
 	    GetFare getfareobj = new GetFare();
 	    double fare = getfareobj.getfare(flightid);
+	    double extra=0;
+	    
+	    System.out.println("Do you want Premium Ticket? (yes/no): ");
+	    String choice = sc.nextLine();
+	    if(choice.equalsIgnoreCase("yes")) {
+	        extra = (10.0*fare)/100;
+	        fare+=extra;
+	    }
+	    
+	    
 	    Payment payment = new Payment(fare);
 	    payment.process();
 	    try {
@@ -153,6 +163,12 @@ public class User {
 	            tempFile.renameTo(inputFile);
 	        }
 	        System.out.println("Seats updated successfully. Booking confirmed!");
+	        if(extra==0) {
+	        	Ticket ticket = new Ticket(passenger, flightid, "CONFIRMED", payment, fare);
+	        }
+	        else {
+	        	PremiumTicket ticket = new PremiumTicket(passenger, flightid, "CONFIRMED", payment, fare, extra);
+	        }
 	    }
 	    catch (Exception e) {
 	        System.out.println("Error updating seats: " + e.getMessage());
@@ -214,4 +230,3 @@ public class User {
 	}
 
 }
-

@@ -10,19 +10,22 @@ public class Payment implements payByCard, payByUPI, payByNetBanking {
     public Payment(double amount) {
         this.amount = amount;
     }
-    public void payByCard(String cardNumber, String cardHolderName, String expiryDate, int cvv) {
+    @Override
+    public void paybycard(String cardNumber, String cardHolderName, String expiryDate, int cvv) {
         System.out.println("Processing card payment...");
         paymentMethod = "CARD";
         sourceID = cardNumber;
         paymentStatus = "Completed";
     }
-    public void payByUPI(String upiID) {
+    @Override
+    public void paybyUPI(String upiID) {
         System.out.println("Processing UPI payment...");
         paymentMethod = "UPI";
         sourceID = upiID;
         paymentStatus = "Completed";
     }
-    public void payByNetBanking(String bankName, String userID, String password) {
+    @Override
+    public void paybynetbanking(String bankName, String userID, String password) {
         System.out.println("Processing Net Banking payment...");
         paymentMethod = "Net Banking";
         sourceID = userID + "/" + bankName;
@@ -49,12 +52,12 @@ public class Payment implements payByCard, payByUPI, payByNetBanking {
             System.out.println("Enter CVV:");
             int cvv = sc.nextInt();
             sc.nextLine();
-            payByCard(cardNumber, cardHolderName, expiryDate, cvv);
+            paybycard(cardNumber, cardHolderName, expiryDate, cvv);
         }
         else if (ch == 2) {
             System.out.println("Enter UPI ID:");
             String upiID = sc.nextLine();
-            payByUPI(upiID);
+            paybyUPI(upiID);
         }
         else if (ch == 3) {
             System.out.println("Enter Bank Name:");
@@ -63,7 +66,7 @@ public class Payment implements payByCard, payByUPI, payByNetBanking {
             String userID = sc.nextLine();
             System.out.println("Enter Password:");
             String password = sc.nextLine();
-            payByNetBanking(bankName, userID, password);
+            paybynetbanking(bankName, userID, password);
         }
         else {
             System.out.println("Invalid choice.");
