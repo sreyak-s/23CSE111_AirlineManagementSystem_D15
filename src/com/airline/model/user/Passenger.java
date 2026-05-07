@@ -11,7 +11,7 @@ public class Passenger {
 	private String dob;
 	private String seat;
 	private String clas;
-	Passenger(String fname, String lname, String nationality, String phone, String email, int age, String passport, String dob){
+	public Passenger(String fname, String lname, String nationality, String phone, String email, int age, String passport, String dob){
 		this.fname=fname;
 		this.lname=lname;
 		this.nationality=nationality;

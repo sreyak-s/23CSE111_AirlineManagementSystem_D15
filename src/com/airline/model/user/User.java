@@ -1,7 +1,6 @@
 package com.airline.model.user;
 import com.airline.model.booking.*;
 import com.airline.model.admin.*;
-import com.airline.model.flight.*;
 import com.airline.model.payment.*;
 import java.util.Scanner;
 import java.io.*;

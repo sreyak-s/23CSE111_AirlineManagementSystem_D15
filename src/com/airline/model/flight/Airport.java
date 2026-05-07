@@ -11,6 +11,7 @@ public class Airport{
     this.country=country;
     this.gate=gate;
   }
+  //Instead of using the following functions, we made the variables public
   public void getairportCode(){
     System.out.println(airportCode); 
   }

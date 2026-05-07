@@ -1,5 +1,5 @@
 package com.airline.model.payment;
 
 public interface payByUPI {
-	void paybyUPI(String upiID);
+	public void paybyUPI(String upiID);
 }
